@@ -16,9 +16,9 @@ public class RoomMap {
 	public RoomMap(){
 		Room r = findRoom("dreamHouse");
 		GameObject knife = new GameObject("knife", "a shiny knife");
-		r.objects.add(knife);
-		GameObject table = new GameObject("table", "a wooden table");
-		r.objects.add(table);
+		r.objects.forceAdd(knife);
+		GameObject table = new GameObject("table", "a wooden table", true);
+		r.objects.forceAdd(table);
 	}
 	
 	private Room location = findRoom("Forest");

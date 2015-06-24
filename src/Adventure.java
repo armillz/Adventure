@@ -11,6 +11,10 @@ import java.io.InputStreamReader;
  */
 public class Adventure {
 
+	// our backpack (place-holder until we create a Person object)
+	private static ObjectContainer backpack = new ObjectContainer("backpack");
+	
+	
 	/**
 	 * @param args
 	 */
@@ -31,30 +35,30 @@ public class Adventure {
 			if(s.equals("n")){
 				map.moveNorth();
 				map.showLocation();
-			} else{
-				if(s.equals("s")){
-					map.moveSouth();
-					map.showLocation();
-				}
-			}
+			} else if(s.equals("s")){
+				map.moveSouth();
+				map.showLocation();
+			} else 
+
 			if(s.equals("e")){
 				map.moveEast();
 				map.showLocation();
-			}
+			} else 
 			if(s.equals("stop")){
 				Game.message("Bye!");
 				flag = false;
-			}
+			} else 
 			if(s.equals("w")){
 				map.movewest();
 				map.showLocation();
-			}
-			if(s.equals("commands")){
+			} else 
+			if(s.equals("commands") || s.equals("?")){
 				Game.message("n - go north");
 				Game.message("s - go south");
 				Game.message("e - go east");
 				Game.message("w - go west");
-			}
+				map.showLocation();
+			} else 
 			if(s.equals("sleep")){
 				if(map.roomTitle().equals("Upstairs")){
 					map.dreamActivate();
@@ -63,13 +67,22 @@ public class Adventure {
 					Game.message("You probably shouldnt sleep now");
 
 				}
-			}
-			if(s.equals("take knife")){
+			} else if(s.equals("take knife")){
+				// Remove knife from current room and insert into backpack
 				Room this_room = map.getLocation();
-				
 				GameObject go = this_room.removeObject("knife");
-				// TODO: Person me.add(go);
+				go.insertInto(backpack);
+			} else if(s.equals("drop knife")){
+				// Remove knife from backpack and insert into current room
+				Room this_room = map.getLocation();
+				GameObject go = backpack.remove("knife");
+				go.insertInto(this_room.objects);
+				
+			} else if (s.equals("backpack")) {
+				Game.message("Backpack contains:");
+				backpack.showAllObjects();
 			}
+			
 		}
 
 	}
