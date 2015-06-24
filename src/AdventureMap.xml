@@ -1,0 +1,21 @@
+<AdventureMap>
+	<Rooms>
+		<Room title="House">
+			<Description>
+			In a white house
+			</Description>
+			<Exits>
+				<Exit direction="n" room_id="Forest" locked=false/>
+				<Exit direction="e" room_id="Porch" locked=false/>
+			</Exits>
+		</Room>
+		<Room title="Forest">
+			<Description>
+			In the green forest
+			</Description>
+			<Exits>
+				<Exit direction="n" room_id="House" locked=false/>
+			</Exits>
+		</Room>
+	</Rooms>
+</AdventureMap>
