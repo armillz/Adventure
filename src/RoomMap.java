@@ -9,8 +9,14 @@ public class RoomMap {
 			new Room("Shed", "a Shed", "In a shed under the porch, there are stairs to the porch to the east and there is a river to the south", null, null, "Porch", "River"),
 			new Room("Upstairs", "the top floor of the House", "On the second floor of the house, there is a bed to the north. There are stairs back down to the main floor to the west", "Dream Room", "House", null ,null),
 			new Room("Dream Room", "the top floor of the House", "You fall asleep, when you wake up you are back in the top floor of the house,\n with the stairs to the west and the bed to the north, but you feel that something has changed...", "dreamRoom2", "dreamHouse", null, null),
-			new Room("dreamHouse", "the main floor of the House", "You walk downstairs to find everything all torn up and blood on the floor by the east porch door and the door to the forest is sealed shut. \nYou see a knife on the table", "dreamPorch", "Dream Room", "dreamPorch", null),
-			new Room("dreamRoom2", "the top floor of the House", "You probably shouldn't go back to sleep. Maybe you should see whats going on downstairs...", null, "dreamHouse", null, null)
+			new Room("dreamHouse", "the main floor of the House", "You walk downstairs to find everything all torn up and blood on the floor by the east porch door and the door to the forest is sealed shut. \nYou see a knife on the table", "dreamPorch", "dreamRoom3", "dreamPorch", null),
+			new Room("dreamRoom2", "the top floor of the House", "You probably shouldn't go back to sleep. Maybe you should see whats going on downstairs...", null, "dreamHouse", null, null),
+			new Room("dreamRoom3", "the top floor of the House", "You are back upstairs, with the stairs to the west and the bed, but you probably shouldnt sleep", null, "dreamHouse", null, null),
+			new Room("dreamPorch", "the porch", "You are on the porch, with doors to the house to the north and west and stairs to the shed to the east. The trail of blood leads to \n the shed", "dreamHouse", "dreamHouse", "dreamShed", null),
+			new Room("dreamShed", "the shed", "You are in the shed under the porch, with stairs up to the porch to the east and the river to the south. There is a lot of blood here\n and it seems to lead outside to the river. The shed is surprisingly empty exept for a book that seems to be written is strange symbols", null, null, "dreamPorch", "dreamRiver"),
+			new Room("dreamRiver", "the river", "You are next to the river south of the shed, to the west is the forest. The trail of blood leads toward the forest. There is a small\n stone here with some strange carvings on it", "dreamShed", "dreamForest", null, null),
+			new Room("dreamForest", "the forest", "You are in the forest south of your house, but your house is nowhere to be seen. The trail of blood leads to a strange door set in a\n stone wall that you dont remember ever being there before, next to the door is an indentation in the wall that looks fit for a small\n rock. West leads back to the river", null, "dreamRiver", null, null)
+			
 	};
 
 	public RoomMap(){
@@ -28,6 +34,14 @@ public class RoomMap {
 		r.objects.forceAdd(go);
 		
 		go = new GameObject("tree", "a tall tree", true);
+		r.objects.forceAdd(go);
+		
+		r = findRoom("dreamShed");
+		go = new GameObject("book", "a book written in strange symbols");
+		r.objects.forceAdd(go);
+		
+		r = findRoom("dreamRiver");
+		go = new GameObject("stone", "a stone with strange carvings engraved in it");
 		r.objects.forceAdd(go);
 		
 	}
