@@ -14,11 +14,22 @@ public class RoomMap {
 	};
 
 	public RoomMap(){
-		Room r = findRoom("dreamHouse");
+		Room r = null;
+		GameObject go = null;
+		
+		r = findRoom("dreamHouse");
 		GameObject knife = new GameObject("knife", "a shiny knife");
 		r.objects.forceAdd(knife);
 		GameObject table = new GameObject("table", "a wooden table", true);
 		r.objects.forceAdd(table);
+		
+		r = findRoom("Forest");
+		go = new GameObject("stick", "a small crooked stick");
+		r.objects.forceAdd(go);
+		
+		go = new GameObject("tree", "a tall tree", true);
+		r.objects.forceAdd(go);
+		
 	}
 	
 	private Room location = findRoom("Forest");
