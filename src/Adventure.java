@@ -62,7 +62,9 @@ public class Adventure {
 				Game.message("w - go west");
 				Game.message("take {item} - pick up an item");
 				Game.message("drop {item} - drop an item");
-				map.showLocation();
+				Game.message("stop - quit game");
+				Game.message("look - show room");
+				Game.message("backpack - show contents of backpack");
 			} else 
 			if(cmd.equals("sleep")){
 				if(map.roomTitle().equals("Upstairs")){
@@ -93,6 +95,10 @@ public class Adventure {
 			} else if (cmd.equals("backpack")) {
 				Game.message("Backpack contains:");
 				backpack.showAllObjects();
+			} else if (cmd.equals("look")) {
+				map.showLocation();
+			} else {
+				Game.message("I don't recognize the command '" + cmd + "'");
 			}
 			
 		}
