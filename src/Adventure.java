@@ -60,6 +60,8 @@ public class Adventure {
 				Game.message("s - go south");
 				Game.message("e - go east");
 				Game.message("w - go west");
+				Game.message("take {item} - pick up an item");
+				Game.message("drop {item} - drop an item");
 				map.showLocation();
 			} else 
 			if(cmd.equals("sleep")){
