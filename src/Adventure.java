@@ -32,34 +32,37 @@ public class Adventure {
 
 		while (flag == true){
 			String s = readInput("What do you want to do?");
-			if(s.equals("n")){
+			String[] parts = s.split(" ");
+			String cmd = parts[0];
+			
+			if(cmd.equals("n")){
 				map.moveNorth();
 				map.showLocation();
-			} else if(s.equals("s")){
+			} else if(cmd.equals("s")){
 				map.moveSouth();
 				map.showLocation();
 			} else 
 
-			if(s.equals("e")){
+			if(cmd.equals("e")){
 				map.moveEast();
 				map.showLocation();
 			} else 
-			if(s.equals("stop")){
+			if(cmd.equals("stop")){
 				Game.message("Bye!");
 				flag = false;
 			} else 
-			if(s.equals("w")){
+			if(cmd.equals("w")){
 				map.movewest();
 				map.showLocation();
 			} else 
-			if(s.equals("commands") || s.equals("?")){
+			if(cmd.equals("commands") || cmd.equals("?")){
 				Game.message("n - go north");
 				Game.message("s - go south");
 				Game.message("e - go east");
 				Game.message("w - go west");
 				map.showLocation();
 			} else 
-			if(s.equals("sleep")){
+			if(cmd.equals("sleep")){
 				if(map.roomTitle().equals("Upstairs")){
 					map.dreamActivate();
 					map.showLocation();
@@ -67,18 +70,25 @@ public class Adventure {
 					Game.message("You probably shouldnt sleep now");
 
 				}
-			} else if(s.equals("take knife")){
+			} else if(cmd.equals("take")){
 				// Remove knife from current room and insert into backpack
 				Room this_room = map.getLocation();
-				GameObject go = this_room.removeObject("knife");
+				GameObject go = this_room.removeObject(parts[1]);
 				go.insertInto(backpack);
-			} else if(s.equals("drop knife")){
+				Game.message("You have taken " + parts[1]);
+				Game.message("Items in room:");
+				this_room.objects.showAllObjects();
+				
+			} else if(cmd.equals("drop")){
 				// Remove knife from backpack and insert into current room
 				Room this_room = map.getLocation();
-				GameObject go = backpack.remove("knife");
+				GameObject go = backpack.remove(parts[1]);
 				go.insertInto(this_room.objects);
+				Game.message("You have dropped " + parts[1]);
+				Game.message("Items in room:");
+				this_room.objects.showAllObjects();
 				
-			} else if (s.equals("backpack")) {
+			} else if (cmd.equals("backpack")) {
 				Game.message("Backpack contains:");
 				backpack.showAllObjects();
 			}
