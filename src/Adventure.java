@@ -16,6 +16,7 @@ public class Adventure {
 	
 	
 	/**
+	 * adventure game
 	 * @param args
 	 */
 	public static void main(String[] args) {
